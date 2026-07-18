@@ -1,0 +1,163 @@
+.widget {
+  padding: 20px;
+  height: 100%;
+}
+
+.widget h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Weather Widget */
+.weather-widget .weather-content {
+  text-align: center;
+}
+
+.weather-widget .temp {
+  font-size: 48px;
+  font-weight: bold;
+  color: #667eea;
+  margin: 10px 0;
+}
+
+.weather-widget .condition {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.weather-widget .details {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.weather-widget .detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.weather-widget .detail span:first-child {
+  font-size: 12px;
+  color: #999;
+}
+
+.weather-widget .detail span:last-child {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Clock Widget */
+.clock-widget .clock-content {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.clock-widget .clock-time {
+  font-size: 48px;
+  font-weight: bold;
+  color: #667eea;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+}
+
+.clock-widget .clock-date {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Todo Widget */
+.todo-widget .todo-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.todo-widget .todo-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.todo-widget input[type='text'] {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.todo-widget input[type='text']:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.todo-widget button {
+  padding: 8px 16px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.todo-widget button:hover {
+  background: #5568d3;
+}
+
+.todo-widget .todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.todo-widget li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.todo-widget li:hover {
+  background: #f0f0f0;
+}
+
+.todo-widget li.completed span {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.todo-widget li input[type='checkbox'] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.todo-widget li span {
+  flex: 1;
+  font-size: 14px;
+}
+
+.todo-widget li button {
+  padding: 4px 8px;
+  font-size: 12px;
+  background: #ff6b6b;
+}
+
+.todo-widget li button:hover {
+  background: #ff5252;
+}
