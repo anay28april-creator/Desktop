@@ -1,12 +1,35 @@
 .widget {
+  background: white;
+  border-radius: 12px;
   padding: 20px;
-  height: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .widget h2 {
+  margin: 0 0 16px 0;
   font-size: 18px;
-  margin-bottom: 15px;
   color: #333;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 8px;
+}
+
+/* Clock Widget */
+.clock-widget .clock-content {
+  text-align: center;
+}
+
+.clock-time {
+  font-size: 48px;
+  font-weight: bold;
+  color: #667eea;
+  font-family: 'Courier New', monospace;
+  margin: 16px 0;
+}
+
+.clock-date {
+  font-size: 14px;
+  color: #999;
+  margin-top: 8px;
 }
 
 /* Weather Widget */
@@ -14,92 +37,76 @@
   text-align: center;
 }
 
-.weather-widget .temp {
-  font-size: 48px;
+.temp {
+  font-size: 42px;
   font-weight: bold;
   color: #667eea;
-  margin: 10px 0;
+  margin: 12px 0;
 }
 
-.weather-widget .condition {
+.condition {
   font-size: 16px;
   color: #666;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
-.weather-widget .details {
-  display: flex;
-  justify-content: space-around;
-  padding-top: 15px;
-  border-top: 1px solid #e0e0e0;
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
 }
 
-.weather-widget .detail {
+.detail {
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 5px;
+  gap: 6px;
 }
 
-.weather-widget .detail span:first-child {
+.detail span:first-child {
   font-size: 12px;
   color: #999;
+  text-transform: uppercase;
 }
 
-.weather-widget .detail span:last-child {
-  font-size: 14px;
+.detail span:last-child {
+  font-size: 16px;
   font-weight: 600;
   color: #333;
 }
 
-/* Clock Widget */
-.clock-widget .clock-content {
-  text-align: center;
-  padding: 20px 0;
-}
-
-.clock-widget .clock-time {
-  font-size: 48px;
-  font-weight: bold;
-  color: #667eea;
-  font-family: 'Courier New', monospace;
-  letter-spacing: 2px;
-}
-
-.clock-widget .clock-date {
-  font-size: 14px;
-  color: #666;
-  margin-top: 10px;
-}
-
 /* Todo Widget */
-.todo-widget .todo-content {
+.todo-widget {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  max-height: 400px;
 }
 
-.todo-widget .todo-input-group {
+.todo-input-group {
   display: flex;
   gap: 8px;
+  margin-bottom: 16px;
 }
 
-.todo-widget input[type='text'] {
+.todo-input {
   flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #e0e0e0;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 14px;
-}
-
-.todo-widget input[type='text']:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+  transition: border-color 0.2s;
 }
 
-.todo-widget button {
-  padding: 8px 16px;
+.todo-input:focus {
+  border-color: #667eea;
+}
+
+.todo-add-btn {
+  padding: 10px 16px;
   background: #667eea;
   color: white;
   border: none;
@@ -109,55 +116,69 @@
   transition: background 0.2s;
 }
 
-.todo-widget button:hover {
+.todo-add-btn:hover {
   background: #5568d3;
 }
 
-.todo-widget .todo-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-height: 300px;
+.todo-list {
+  flex: 1;
   overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.todo-widget li {
+.todo-item {
   display: flex;
   align-items: center;
-  gap: 10px;
   padding: 10px;
   background: #f9f9f9;
+  margin-bottom: 8px;
   border-radius: 6px;
   transition: background 0.2s;
 }
 
-.todo-widget li:hover {
+.todo-item:hover {
   background: #f0f0f0;
 }
 
-.todo-widget li.completed span {
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+}
+
+.todo-item.completed .todo-text {
   text-decoration: line-through;
   color: #999;
 }
 
-.todo-widget li input[type='checkbox'] {
-  cursor: pointer;
-  width: 18px;
-  height: 18px;
-}
-
-.todo-widget li span {
-  flex: 1;
-  font-size: 14px;
-}
-
-.todo-widget li button {
-  padding: 4px 8px;
-  font-size: 12px;
+.todo-delete {
   background: #ff6b6b;
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
 }
 
-.todo-widget li button:hover {
+.todo-delete:hover {
   background: #ff5252;
+}
+
+.todo-empty {
+  text-align: center;
+  color: #999;
+  padding: 20px 0;
+  font-size: 14px;
 }

@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import './Widget.css';
 
 function Todo() {
-  const [todos, setTodos] = useState([
-    { id: 1, text: 'Build widget app', completed: true },
-    { id: 2, text: 'Add more widgets', completed: false }
-  ]);
+  const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
 
   const addTodo = () => {
@@ -21,39 +18,59 @@ function Todo() {
     ));
   };
 
-  const removeTodo = (id) => {
+  const deleteTodo = (id) => {
     setTodos(todos.filter(todo => todo.id !== id));
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      addTodo();
+    }
   };
 
   return (
     <div className="widget todo-widget">
       <h2>Todo List</h2>
-      <div className="todo-content">
-        <div className="todo-input-group">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && addTodo()}
-            placeholder="Add a task..."
-          />
-          <button onClick={addTodo}>Add</button>
-        </div>
+      <div className="todo-input-group">
+        <input
+          type="text"
+          className="todo-input"
+          placeholder="Add a new task..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyPress={handleKeyPress}
+        />
+        <button className="todo-add-btn" onClick={addTodo}>
+          Add
+        </button>
+      </div>
 
+      {todos.length === 0 ? (
+        <div className="todo-empty">No tasks yet. Add one to get started!</div>
+      ) : (
         <ul className="todo-list">
           {todos.map(todo => (
-            <li key={todo.id} className={todo.completed ? 'completed' : ''}>
+            <li
+              key={todo.id}
+              className={`todo-item ${todo.completed ? 'completed' : ''}`}
+            >
               <input
                 type="checkbox"
+                className="todo-checkbox"
                 checked={todo.completed}
                 onChange={() => toggleTodo(todo.id)}
               />
-              <span>{todo.text}</span>
-              <button onClick={() => removeTodo(todo.id)}>Delete</button>
+              <span className="todo-text">{todo.text}</span>
+              <button
+                className="todo-delete"
+                onClick={() => deleteTodo(todo.id)}
+              >
+                ×
+              </button>
             </li>
           ))}
         </ul>
-      </div>
+      )}
     </div>
   );
 }
